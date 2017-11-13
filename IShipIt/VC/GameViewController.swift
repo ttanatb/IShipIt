@@ -11,25 +11,58 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    var skView: SKView!
+    
+    let screenSize = CGSize(width: 1080, height: 1920)
+    let scaleMode = SKSceneScaleMode.aspectFill
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        skView = self.view as! SKView
+
+        // Load the SKScene from 'GameScene.sks'
+        loadHomeScene()
+        
+        skView.ignoresSiblingOrder = true
+        skView.showsPhysics = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        
+    }
+    
+    func loadHomeScene() {
+        let scene = HomeScene(size:screenSize, scaleMode:scaleMode, sceneManager: self)
+        scene.scaleMode = .aspectFit
+        scene.size = skView.bounds.size
+        let reveal = SKTransition.crossFade(withDuration: 1)
+        skView.presentScene(scene, transition: reveal)
+    }
+    
+    func loadGameScene() {
+        let gameScene = GameScene(size:screenSize, scaleMode: scaleMode,  sceneManager: self)
+        
+        gameScene.scaleMode = .aspectFit
+        gameScene.size = skView.bounds.size
+        
+        let reveal = SKTransition.doorsOpenHorizontal(withDuration: 1)
+        skView.presentScene(gameScene, transition: reveal)
+    }
+    
+    func loadInstructionsScene() {
+        let scene = InstructionsScene(size: screenSize, sceneManager: self)
+        scene.scaleMode = .aspectFit
+        scene.size = skView.bounds.size
+        let reveal = SKTransition.crossFade(withDuration: 1)
+        skView.presentScene(scene, transition: reveal)
+    }
+    
+    func loadGameOverScene(score:Int) {
+        let scene = GameOverScene(size:screenSize, sceneManager: self, score: score)
+        scene.scaleMode = .aspectFit
+        scene.size = skView.bounds.size
+        let reveal = SKTransition.crossFade(withDuration: 1)
+        skView.presentScene(scene, transition: reveal)
     }
 
     override var shouldAutorotate: Bool {
@@ -37,11 +70,7 @@ class GameViewController: UIViewController {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .landscape
     }
 
     override func didReceiveMemoryWarning() {
