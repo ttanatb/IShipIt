@@ -24,6 +24,6 @@ struct GameData{
     
     
     struct scene {
-        static let backgroundColor = SKColor(red: 0.2, green: 0.39, blue: 0.80, alpha: 1.0)
+        static let backgroundColor = SKColor(red: 0.242, green: 0.168, blue: 0.131, alpha: 0.4)
     }
 }

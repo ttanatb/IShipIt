@@ -29,7 +29,7 @@ class HomeScene:SKScene {
         
         //change this
         let label = SKLabelNode(fontNamed: GameData.font.mainFont)
-        label.text = "Cold War"
+        label.text = "I Ship It"
         label.position = CGPoint(x:size.width/2, y:size.height/2 + 100)
         label.fontSize = 165
         label.zPosition = 1
@@ -38,7 +38,7 @@ class HomeScene:SKScene {
         //change this
         let label4 = SKLabelNode(fontNamed: GameData.font.mainFont)
         label4.text = "Tap to continue"
-        label4.fontColor = UIColor.purple
+        label4.fontColor = UIColor.init(red: 0.179, green: 0.222, blue: 0.232, alpha: 1.5)
         label4.fontSize = 70
         label4.position = CGPoint(x:size.width/2, y:size.height/2 - 300)
         addChild(label4)
