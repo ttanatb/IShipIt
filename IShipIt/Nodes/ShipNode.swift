@@ -12,6 +12,7 @@ class ShipNode: SKSpriteNode, CustomNodeEvents {
     func didMoveToScene() {
         physicsBody?.categoryBitMask = PhysicsCategory.Ship
         physicsBody?.collisionBitMask = PhysicsCategory.Wave | PhysicsCategory.Edge
+        physicsBody?.contactTestBitMask = PhysicsCategory.Wave
     }
 }
 

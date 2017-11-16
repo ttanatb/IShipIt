@@ -9,10 +9,6 @@
 import SpriteKit
 import GameplayKit
 
-protocol CustomNodeEvents {
-    func didMoveToScene()
-}
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var shipNode: ShipNode!
@@ -33,22 +29,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         shipNode = childNode(withName: "//ship_body") as! ShipNode
         waveBaseNode = childNode(withName: "wave_base") as! WaveNode
-        print(shipNode)
+        //print(shipNode)
     }
     
-    func touchDown(atPoint pos : CGPoint) {
-      
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-
-    }
-    
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         isHolding = true
     }
@@ -69,11 +52,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipNode.zRotation = MotionMonitor.Instance.rotation
         
         if isHolding {
+            shipNode.physicsBody?.applyImpulse(CGVector(dx:0, dy: 10))
             //shipNode.physicsBody?.applyImpulse(CGVector(dx: 10, dy:0))
         }
         
         var position = waveBaseNode.position
         position.x -= CGFloat(0.8)
         waveBaseNode.position = position
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let bodyA:SKPhysicsBody
+        let bodyB:SKPhysicsBody
+        
+        if (contact.bodyA.categoryBitMask > contact.bodyB.categoryBitMask) {
+            bodyB = contact.bodyA
+            bodyA = contact.bodyB
+        } else {
+            bodyA = contact.bodyA
+            bodyB = contact.bodyB
+        }
+        
+        if (bodyA.categoryBitMask == PhysicsCategory.Ship &&
+            bodyB.categoryBitMask == PhysicsCategory.Wave) {
+            let degree = atan2(contact.contactNormal.dy, contact.contactNormal.dx) - CGFloat.pi / 2
+            print("boat: \(shipNode.zRotation) degree: \(degree)");
+        }
     }
 }

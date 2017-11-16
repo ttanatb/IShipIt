@@ -12,5 +12,7 @@ class WaveNode: SKSpriteNode, CustomNodeEvents {
     func didMoveToScene() {
         physicsBody?.categoryBitMask = PhysicsCategory.Wave
         physicsBody?.collisionBitMask = PhysicsCategory.Ship
+        physicsBody?.contactTestBitMask = PhysicsCategory.Ship
     }
+    
 }
