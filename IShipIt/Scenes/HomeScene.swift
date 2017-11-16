@@ -35,6 +35,14 @@ class HomeScene:SKScene {
         label.zPosition = 1
         addChild(label)
         
+        // logo
+        var texture:SKSpriteNode
+        texture = SKSpriteNode(imageNamed: "boat")
+        texture.setScale(0.02)
+        texture.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        addChild(texture)
+
+        
         //change this
         let label4 = SKLabelNode(fontNamed: GameData.font.mainFont)
         label4.text = "Tap to continue"
