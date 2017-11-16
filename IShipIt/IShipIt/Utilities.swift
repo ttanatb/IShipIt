@@ -12,6 +12,7 @@ struct PhysicsCategory {
     static let None     : UInt32 = 0x1 << 0
     static let Ship     : UInt32 = 0x1 << 1
     static let Wave     : UInt32 = 0x1 << 2
+    static let Edge     : UInt32 = 0x1 << 3
     static let All      : UInt32 = UINT32_MAX
 }
 

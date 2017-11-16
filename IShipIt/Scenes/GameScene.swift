@@ -9,22 +9,33 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
-    let sceneManager:GameViewController
-    
-    init(size: CGSize, scaleMode:SKSceneScaleMode, sceneManager:GameViewController) {
-        self.sceneManager = sceneManager
-        var texture = SKTexture(imageNamed: "boat")
-        super.init(size: size)
-    }
+protocol CustomNodeEvents {
+    func didMoveToScene()
+}
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var shipNode: ShipNode!
+    var waveBaseNode: WaveNode!
+    var isHolding = true
     
     override func didMove(to view: SKView) {
+        physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        physicsWorld.contactDelegate = self
+        physicsBody!.categoryBitMask = PhysicsCategory.Edge
+        physicsBody!.collisionBitMask = PhysicsCategory.Ship
         
+        enumerateChildNodes(withName: "//*", using: {node, _ in
+            if let customNode = node as?CustomNodeEvents {
+                customNode.didMoveToScene()
+            }
+        })
+        
+        shipNode = childNode(withName: "//ship_body") as! ShipNode
+        waveBaseNode = childNode(withName: "wave_base") as! WaveNode
+        print(shipNode)
     }
+    
     func touchDown(atPoint pos : CGPoint) {
       
     }
@@ -37,8 +48,9 @@ class GameScene: SKScene {
 
     }
     
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        isHolding = true
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -46,21 +58,22 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        //isHolding = false
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        //isHolding = false
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        let boat = SKSpriteNode(imageNamed: "boat")
-        var boatPos:CGPoint = CGPoint(x:10, y:10)
-        boat.setScale(0.5)
-        boatPos = CGPoint(x: size.width/2 - 100, y: size.height - 400)
-        boat.position = boatPos
-        addChild(boat)
-
+        shipNode.zRotation = MotionMonitor.Instance.rotation
+        
+        if isHolding {
+            //shipNode.physicsBody?.applyImpulse(CGVector(dx: 10, dy:0))
+        }
+        
+        var position = waveBaseNode.position
+        position.x -= CGFloat(0.8)
+        waveBaseNode.position = position
     }
 }

@@ -17,6 +17,10 @@ func * (point: CGVector, scalar: CGFloat) -> CGVector {
     return CGVector(dx: point.dx * scalar, dy: point.dy * scalar)
 }
 
+func + (lhs: CGVector?, rhs: CGVector) -> CGVector {
+    return CGVector(dx: (lhs?.dx)! + rhs.dx, dy: (lhs?.dy)! + rhs.dy)
+}
+
 extension CGVector {
     func magnitudeSqr() -> CGFloat {
         return (dx*dx + dy*dy)
