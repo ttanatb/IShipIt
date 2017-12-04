@@ -41,27 +41,22 @@ class GameViewController: UIViewController {
     }
     
     func loadGameScene() {
-        
         if let scene = SKScene(fileNamed: "GameScene") {
+            MotionMonitor.Instance.startUpdates()
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
+            
+            if let gameScene = scene as? GameScene {
+                gameScene.setViewController(viewController: self)
+            }
             
             // Present the scene
             if let view = self.view as! SKView? {
                 view.presentScene(scene)
             }
             
-            MotionMonitor.Instance.startUpdates()
-        } else {
-//            let gameScene = GameScene(size:screenSize, scaleMode: scaleMode,  sceneManager: self)
-//
-//            gameScene.scaleMode = .aspectFit
-//            gameScene.size = skView.bounds.size
-//            
-//            let reveal = SKTransition.doorsOpenHorizontal(withDuration: 1)
-//            skView.presentScene(gameScene, transition: reveal)
+
         }
-        
     }
     
     func loadInstructionsScene() {
@@ -73,6 +68,8 @@ class GameViewController: UIViewController {
     }
     
     func loadGameOverScene(score:Int) {
+        MotionMonitor.Instance.stopUpdates()
+        
         let scene = GameOverScene(size:screenSize, sceneManager: self, score: score)
         scene.scaleMode = .aspectFit
         scene.size = skView.bounds.size

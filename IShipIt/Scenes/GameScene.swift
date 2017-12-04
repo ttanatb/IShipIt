@@ -22,6 +22,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isTooMuch = false
     let fallThreshold:CGFloat = 0.35
     
+    var lastUpdateTime: TimeInterval = 0
+    var dt: TimeInterval = 0
+    
+    var viewController:GameViewController? = nil
+    
+    var score:CGFloat = 0
+    
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
@@ -42,12 +49,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         camStartingYPos = (camera?.position)!.y
     }
     
+    func setViewController(viewController: GameViewController) {
+        self.viewController = viewController;
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isHolding = true
+        //isHolding = true
         shipNode.physicsBody?.applyImpulse(CGVector(dx: CGFloat(0), dy: CGFloat(2000)))
-        print(shipNode.physicsBody!.velocity)
+        //print(shipNode.physicsBody!.velocity)
         
-        shipNode.health -= 1
+        //shipNode.health -= 1
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -63,12 +74,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        calculateDeltaTime(currentTime: currentTime)
+        let deltaTime = CGFloat(dt)
         
-        for var wave in waves {
-            wave.update()
-        }
-        
-        shipNode.update()
+        for var wave in waves { wave.update() }
+        shipNode.update(dt: deltaTime)
         
         if (camera?.position.x)! > waves[0].position.x + waves[0].size.width {
             waves[0].position = waves[1].position + CGPoint(x: waves[0].size.width, y: CGFloat(0))
@@ -91,6 +101,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 shipCamera.setScale(scale)
             }
         }
+        
+        score += deltaTime * CGFloat(3)
+    }
+    
+    func calculateDeltaTime(currentTime: TimeInterval) {
+        if lastUpdateTime > 0 {
+            dt = currentTime - lastUpdateTime
+        } else {
+            dt = 0
+        }
+        lastUpdateTime = currentTime
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -105,48 +126,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bodyB = contact.bodyB
         }
         
-        
-        //print("Category A: \(bodyA.categoryBitMask) CategoryB: \(bodyB.categoryBitMask)")
-        
         if (bodyA.categoryBitMask == PhysicsCategory.Ship &&
             bodyB.categoryBitMask == PhysicsCategory.Wave) {
+            
             shipNode.physicsBody?.applyImpulse(CGVector(dx: CGFloat(2000), dy: CGFloat(2000)))
+            
             let degree = atan2(contact.contactNormal.dy, contact.contactNormal.dx) - CGFloat.pi / 2
-            
-            //print("Current degree: \(atan2(contact.contactNormal.dy, contact.contactNormal.dx) - CGFloat.pi / 2)");
-            
             if abs(degree) > CGFloat(0.4) {
                 if abs(degree - shipNode.zRotation) > fallThreshold {
-                    shipNode.color = UIColor.red;
-                } else {
-                    shipNode.color = UIColor.white;
+                    shipNode.health -= 1;
+                    if (shipNode.health < 1) {
+                        viewController?.loadGameOverScene(score: Int(score))
+                    }
                 }
             } else {
                 if abs(degree - shipNode.zRotation) > fallThreshold * 2 {
-                    shipNode.color = UIColor.red;
-                } else {
-                    shipNode.color = UIColor.white;
+                    shipNode.health -= 1;
+                    if (shipNode.health < 1) {
+                        viewController?.loadGameOverScene(score: Int(score))
+                    }
                 }
             }
-            //print("degree difference: \(abs(shipNode.zRotation - degree))");
-        }
-    }
-    
-    func didEnd(_ contact: SKPhysicsContact) {
-        let bodyA:SKPhysicsBody
-        let bodyB:SKPhysicsBody
-        
-        if (contact.bodyA.categoryBitMask > contact.bodyB.categoryBitMask) {
-            bodyB = contact.bodyA
-            bodyA = contact.bodyB
-        } else {
-            bodyA = contact.bodyA
-            bodyB = contact.bodyB
-        }
-        
-        if (bodyA.categoryBitMask == PhysicsCategory.Ship &&
-            bodyB.categoryBitMask == PhysicsCategory.Wave) {
-            
         }
     }
 }
