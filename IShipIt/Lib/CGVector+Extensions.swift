@@ -33,4 +33,8 @@ extension CGVector {
     func normalize() -> CGVector {
         return self / magnitude()
     }
+    
+    public static func random() -> CGVector {
+        return CGVector(dx: CGFloat.random() - 0.5, dy: CGFloat.random() - 0.5)
+    }
 }

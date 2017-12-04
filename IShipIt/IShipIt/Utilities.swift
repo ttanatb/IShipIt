@@ -18,7 +18,7 @@ struct PhysicsCategory {
 
 struct SpriteLayer {
     static let Background   : CGFloat = 0
-    static let FrontBG      : CGFloat = 1
+    static let BackWave     : CGFloat = 1
     static let Sprites      : CGFloat = 2
     static let Foreground   : CGFloat = 3
     static let HUD          : CGFloat = 4
