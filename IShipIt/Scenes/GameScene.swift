@@ -31,6 +31,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        backgroundColor = GameData.scene.mainBackgroundColor
+        
         let backgroundMusic = SKAudioNode(fileNamed: "TitanicRecorderTheme")
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)

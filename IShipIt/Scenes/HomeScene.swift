@@ -46,8 +46,8 @@ class HomeScene:SKScene {
         //change this
         let label4 = SKLabelNode(fontNamed: GameData.font.mainFont)
         label4.text = "Tap to continue"
-        label4.fontColor = UIColor.init(red: 0.179, green: 0.222, blue: 0.232, alpha: 1.5)
-        label4.fontSize = 70
+        //label4.fontColor = UIColor.init(red: 0.179, green: 0.222, blue: 0.232, alpha: 1.5)
+        label4.fontSize = 45
         label4.position = CGPoint(x:size.width/2, y:size.height/2 - 300)
         addChild(label4)
         

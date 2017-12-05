@@ -30,6 +30,7 @@ class GameOverScene: SKScene {
         
         let label = SKLabelNode(fontNamed: GameData.font.mainFont)
         label.text = "Game Over"
+        label.fontColor = UIColor.red
         label.fontSize = 100
         label.position = CGPoint(x:size.width/2, y:size.height/2 + 200)
         addChild(label)
@@ -42,10 +43,16 @@ class GameOverScene: SKScene {
         
         let label4 = SKLabelNode(fontNamed: GameData.font.mainFont)
         label4.text = "Tap to play again"
-        label4.fontColor = UIColor.purple
         label4.fontSize = 70
         label4.position = CGPoint(x:size.width/2, y:size.height/2 - 300)
         addChild(label4)
+        
+        // logo
+        var texture:SKSpriteNode
+        texture = SKSpriteNode(imageNamed: "boat")
+        texture.setScale(0.02)
+        texture.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 70)
+        addChild(texture)
         
     }
     
