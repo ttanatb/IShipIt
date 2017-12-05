@@ -14,7 +14,7 @@ struct GameData{
     }
     
     struct font{
-        static let mainFont = "AppleSDGothicNeo-Regular"
+        static let mainFont = "Adventure"
     }
     
     struct hud{
