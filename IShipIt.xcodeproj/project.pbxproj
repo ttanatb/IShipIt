@@ -24,6 +24,7 @@
 		3F5CA92C1FB4AB600012CCF6 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CA9291FB4AB600012CCF6 /* CGVector+Extensions.swift */; };
 		3F5CA92E1FB4ABC00012CCF6 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CA92D1FB4ABC00012CCF6 /* GameData.swift */; };
 		3F5CA9301FB4AE850012CCF6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CA92F1FB4AE850012CCF6 /* Utilities.swift */; };
+		DBB0E5F71FD635650032E9B7 /* TitanicRecorderTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBB0E5F61FD635650032E9B7 /* TitanicRecorderTheme.mp3 */; };
 		F1EC546D1FBD1F70002B7E3C /* Ship.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1EC546C1FBD1F70002B7E3C /* Ship.sks */; };
 		F1EC54701FBD2C95002B7E3C /* ShipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC546F1FBD2C95002B7E3C /* ShipNode.swift */; };
 		F1EC54721FBD2CB7002B7E3C /* WaveNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC54711FBD2CB7002B7E3C /* WaveNode.swift */; };
@@ -50,6 +51,7 @@
 		3F5CA9291FB4AB600012CCF6 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		3F5CA92D1FB4ABC00012CCF6 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		3F5CA92F1FB4AE850012CCF6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		DBB0E5F61FD635650032E9B7 /* TitanicRecorderTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TitanicRecorderTheme.mp3; sourceTree = "<group>"; };
 		F1EC546C1FBD1F70002B7E3C /* Ship.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Ship.sks; sourceTree = "<group>"; };
 		F1EC546F1FBD2C95002B7E3C /* ShipNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipNode.swift; sourceTree = "<group>"; };
 		F1EC54711FBD2CB7002B7E3C /* WaveNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveNode.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		3F5CA8FC1FB4A8130012CCF6 = {
 			isa = PBXGroup;
 			children = (
+				DBB0E5F61FD635650032E9B7 /* TitanicRecorderTheme.mp3 */,
 				3F5CA9071FB4A8130012CCF6 /* IShipIt */,
 				3F5CA9061FB4A8130012CCF6 /* Products */,
 			);
@@ -256,6 +259,7 @@
 				3F5CA9161FB4A8130012CCF6 /* Assets.xcassets in Resources */,
 				F1EC546D1FBD1F70002B7E3C /* Ship.sks in Resources */,
 				3F5CA9191FB4A8130012CCF6 /* LaunchScreen.storyboard in Resources */,
+				DBB0E5F71FD635650032E9B7 /* TitanicRecorderTheme.mp3 in Resources */,
 				3F5CA90D1FB4A8130012CCF6 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -30,6 +30,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score:CGFloat = 0
     
     override func didMove(to view: SKView) {
+        
+        let backgroundMusic = SKAudioNode(fileNamed: "TitanicRecorderTheme")
+        backgroundMusic.autoplayLooped = true
+        addChild(backgroundMusic)
+        
         physicsWorld.contactDelegate = self
         
         enumerateChildNodes(withName: "//*", using: {node, _ in
@@ -74,6 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        
         calculateDeltaTime(currentTime: currentTime)
         let deltaTime = CGFloat(dt)
         
@@ -103,6 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         score += deltaTime * CGFloat(3)
+        
     }
     
     func calculateDeltaTime(currentTime: TimeInterval) {
