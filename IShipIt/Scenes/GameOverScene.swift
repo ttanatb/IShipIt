@@ -26,6 +26,7 @@ class GameOverScene: SKScene {
     
     // MARK: - Lifecycle -
     override func didMove(to view: SKView){
+        run(SKAction.playSoundFileNamed("sinking", waitForCompletion: false))
         backgroundColor = GameData.scene.backgroundColor
         
         let label = SKLabelNode(fontNamed: GameData.font.mainFont)
@@ -60,6 +61,7 @@ class GameOverScene: SKScene {
     // MARK: - Events -
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         sceneManager.loadHomeScene()
+        run(SKAction.playSoundFileNamed("splash", waitForCompletion: false))
     }
 }
 

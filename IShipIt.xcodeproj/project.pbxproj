@@ -25,6 +25,8 @@
 		3F5CA92E1FB4ABC00012CCF6 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CA92D1FB4ABC00012CCF6 /* GameData.swift */; };
 		3F5CA9301FB4AE850012CCF6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CA92F1FB4AE850012CCF6 /* Utilities.swift */; };
 		DBB0E5F71FD635650032E9B7 /* TitanicRecorderTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBB0E5F61FD635650032E9B7 /* TitanicRecorderTheme.mp3 */; };
+		DBD126191FD85EF200AB3F70 /* splash.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBD126181FD85EF200AB3F70 /* splash.wav */; };
+		DBD1261B1FD8635000AB3F70 /* sinking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBD1261A1FD8635000AB3F70 /* sinking.mp3 */; };
 		DBF094F41FD6F47D009120A0 /* Adventure.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBF094F31FD6F47D009120A0 /* Adventure.ttf */; };
 		F1EC546D1FBD1F70002B7E3C /* Ship.sks in Resources */ = {isa = PBXBuildFile; fileRef = F1EC546C1FBD1F70002B7E3C /* Ship.sks */; };
 		F1EC54701FBD2C95002B7E3C /* ShipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC546F1FBD2C95002B7E3C /* ShipNode.swift */; };
@@ -53,6 +55,8 @@
 		3F5CA92D1FB4ABC00012CCF6 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		3F5CA92F1FB4AE850012CCF6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		DBB0E5F61FD635650032E9B7 /* TitanicRecorderTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TitanicRecorderTheme.mp3; sourceTree = "<group>"; };
+		DBD126181FD85EF200AB3F70 /* splash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = splash.wav; sourceTree = "<group>"; };
+		DBD1261A1FD8635000AB3F70 /* sinking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sinking.mp3; sourceTree = "<group>"; };
 		DBF094F31FD6F47D009120A0 /* Adventure.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Adventure.ttf; sourceTree = "<group>"; };
 		F1EC546C1FBD1F70002B7E3C /* Ship.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Ship.sks; sourceTree = "<group>"; };
 		F1EC546F1FBD2C95002B7E3C /* ShipNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipNode.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 			children = (
 				DBF094F31FD6F47D009120A0 /* Adventure.ttf */,
 				DBB0E5F61FD635650032E9B7 /* TitanicRecorderTheme.mp3 */,
+				DBD126181FD85EF200AB3F70 /* splash.wav */,
+				DBD1261A1FD8635000AB3F70 /* sinking.mp3 */,
 				3F5CA9071FB4A8130012CCF6 /* IShipIt */,
 				3F5CA9061FB4A8130012CCF6 /* Products */,
 			);
@@ -257,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBD1261B1FD8635000AB3F70 /* sinking.mp3 in Resources */,
 				3F5CA9141FB4A8130012CCF6 /* Main.storyboard in Resources */,
 				3F5CA90B1FB4A8130012CCF6 /* GameScene.sks in Resources */,
 				3F5CA9161FB4A8130012CCF6 /* Assets.xcassets in Resources */,
@@ -265,6 +272,7 @@
 				DBB0E5F71FD635650032E9B7 /* TitanicRecorderTheme.mp3 in Resources */,
 				3F5CA90D1FB4A8130012CCF6 /* Actions.sks in Resources */,
 				DBF094F41FD6F47D009120A0 /* Adventure.ttf in Resources */,
+				DBD126191FD85EF200AB3F70 /* splash.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

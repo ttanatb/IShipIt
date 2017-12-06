@@ -37,6 +37,7 @@ class InstructionsScene: SKScene {
     
     // MARK: - Events -
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        run(SKAction.playSoundFileNamed("splash", waitForCompletion: false))
         touchCount += 1
         if touchCount == 1 {
             texture.texture = SKTexture(imageNamed: "instructionsHUD")

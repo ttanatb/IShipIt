@@ -58,13 +58,14 @@ class HomeScene:SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        run(SKAction.playSoundFileNamed("splash", waitForCompletion: false))
         for touch in touches {
             if button.frame.contains(touch.location(in: self)) {
                 sceneManager.loadInstructionsScene()
+                run(SKAction.playSoundFileNamed("splash", waitForCompletion: false))
             } else {
                 sceneManager.loadGameScene()
             }
-            
             return
         }
     }

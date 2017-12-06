@@ -31,6 +31,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        run(SKAction.playSoundFileNamed("splash", waitForCompletion: false))
+        
         backgroundColor = GameData.scene.mainBackgroundColor
         
         let backgroundMusic = SKAudioNode(fileNamed: "TitanicRecorderTheme")
