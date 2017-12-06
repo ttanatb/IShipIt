@@ -17,7 +17,7 @@ class InstructionsScene: SKScene {
     // MARK: - Initialization -
     init(size: CGSize, sceneManager:GameViewController) {
         self.sceneManager = sceneManager
-        texture = SKSpriteNode(imageNamed: "instructionsControls")
+        texture = SKSpriteNode(imageNamed: "instructions1")
         super.init(size: size)
     }
     
@@ -29,7 +29,8 @@ class InstructionsScene: SKScene {
     override func didMove(to view: SKView){
         backgroundColor = GameData.scene.backgroundColor
         
-        texture.size = self.size
+        //texture.size = self.size
+        texture.setScale(0.58)
         texture.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         addChild(texture)
     }
@@ -40,7 +41,7 @@ class InstructionsScene: SKScene {
         run(SKAction.playSoundFileNamed("splash", waitForCompletion: false))
         touchCount += 1
         if touchCount == 1 {
-            texture.texture = SKTexture(imageNamed: "instructionsHUD")
+            texture.texture = SKTexture(imageNamed: "instructions2")
         } else {
             sceneManager.loadHomeScene()
         }
