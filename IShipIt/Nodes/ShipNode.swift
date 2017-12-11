@@ -32,6 +32,7 @@ class ShipNode: SKSpriteNode, CustomNodeEvents {
         get { return currHealth }
         set (newValue) {
             if (!isInvulnerable && newValue < people.count) {
+
                 currHealth = newValue;
                 
                 people[currHealth].physicsBody?.isDynamic = true

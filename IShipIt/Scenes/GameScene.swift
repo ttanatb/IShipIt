@@ -194,6 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //should the ship take damage
                 if abs(degree - shipNode.zRotation) > fallThreshold {
                     shipNode.health -= 1;
+                    run(SKAction.playSoundFileNamed("shout", waitForCompletion: false))
                     if (shipNode.health < 1) {
                         viewController?.loadGameOverScene(score: Int(score))
                     }
