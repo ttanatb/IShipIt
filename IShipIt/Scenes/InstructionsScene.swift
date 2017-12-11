@@ -27,6 +27,9 @@ class InstructionsScene: SKScene {
     
     // MARK: - Lifecycle -
     override func didMove(to view: SKView){
+//        let defaults = UserDefaults.standard
+//        defaults.set(0, forKey: "HighScore")
+            
         backgroundColor = GameData.scene.backgroundColor
         
         //texture.size = self.size

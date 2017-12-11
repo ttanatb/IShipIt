@@ -43,20 +43,21 @@ class HomeScene:SKScene {
         addChild(texture)
 
         
-        //change this
+        //Tap
         let label4 = SKLabelNode(fontNamed: GameData.font.mainFont)
         label4.text = "Tap to continue"
-        //label4.fontColor = UIColor.init(red: 0.179, green: 0.222, blue: 0.232, alpha: 1.5)
         label4.fontSize = 55
         label4.position = CGPoint(x:size.width/2, y:size.height/2 - 300)
         addChild(label4)
         
+        //Instructions
         button.text = "Instructions"
         button.position = CGPoint(x:size.width/2, y: size.height/2 - 160)
         button.fontSize = 110
         addChild(button)
     }
     
+    //Check if went to instruction or in game
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         run(SKAction.playSoundFileNamed("splash", waitForCompletion: false))
         for touch in touches {

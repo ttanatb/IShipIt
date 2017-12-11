@@ -11,27 +11,31 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    //MARK: iVars
+    
     var skView: SKView!
     
     let screenSize = CGSize(width: 1080, height: 1920)
     let scaleMode = SKSceneScaleMode.aspectFill
     
+    //MARK: init
     override func viewDidLoad() {
         super.viewDidLoad()
         
         skView = self.view as! SKView
 
-        // Load the SKScene from 'GameScene.sks'
         loadHomeScene()
-        //loadGameScene()
         
         skView.ignoresSiblingOrder = true
-        skView.showsPhysics = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.showsPhysics = false
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         self.becomeFirstResponder()
     }
     
+    //MARK: Functions
+    
+    //home screen
     func loadHomeScene() {
         let scene = HomeScene(size:screenSize, scaleMode:scaleMode, sceneManager: self)
         scene.scaleMode = .aspectFit
@@ -40,6 +44,7 @@ class GameViewController: UIViewController {
         skView.presentScene(scene, transition: reveal)
     }
     
+    //game screen
     func loadGameScene() {
         if let scene = SKScene(fileNamed: "GameScene") {
             MotionMonitor.Instance.startUpdates()
@@ -59,6 +64,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    //instructions screens
     func loadInstructionsScene() {
         let scene = InstructionsScene(size: screenSize, sceneManager: self)
         scene.scaleMode = .aspectFit
@@ -67,6 +73,7 @@ class GameViewController: UIViewController {
         skView.presentScene(scene, transition: reveal)
     }
     
+    //gameover screen
     func loadGameOverScene(score:Int) {
         MotionMonitor.Instance.stopUpdates()
         
@@ -87,7 +94,6 @@ class GameViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     override var prefersStatusBarHidden: Bool {

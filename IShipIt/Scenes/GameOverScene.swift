@@ -42,6 +42,21 @@ class GameOverScene: SKScene {
         label2.position = CGPoint(x:size.width/2, y:size.height/2 - 100)
         addChild(label2)
         
+        let label3 = SKLabelNode(fontNamed: GameData.font.mainFont)
+        
+        let defaults = UserDefaults.standard
+        let highScore = defaults.integer(forKey: "HighScore")
+        if score > highScore {
+            defaults.set(score, forKey: "HighScore")
+            label3.text = "New High Score!"
+        } else {
+            label3.text = "High Score: \(highScore)"
+        }
+        
+        label3.fontSize = 60
+        label3.position = CGPoint(x:size.width/2, y:size.height/2 - 200)
+        addChild(label3)
+        
         let label4 = SKLabelNode(fontNamed: GameData.font.mainFont)
         label4.text = "Tap to play again"
         label4.fontSize = 90
